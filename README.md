@@ -74,7 +74,9 @@ Default values:
 0 0 0 0 0
 
 5️⃣ Direct Initialization
+
 int[] arr = {10,20,30,40,50};
+
 6️⃣ Memory Concept (Important)
 
 Example
@@ -96,7 +98,9 @@ arr[2] → 2056
 Because elements are stored continuously in memory.
 
 Access Time Complexity
+
 O(1)
+
 7️⃣ Important Array Methods
 
 Import first
@@ -114,43 +118,63 @@ Arrays.sort(arr);
 Output
 
 [1,2,5,8]
+
 Arrays.fill()
+
 Arrays.fill(arr, -1);
 
 Result
 
 [-1,-1,-1,-1,-1]
+
 Arrays.copyOf()
+
 int[] arr2 = Arrays.copyOf(arr1, arr1.length);
+
 8️⃣ Traversing an Array
+
 Using for loop
+
 for(int i=0;i<arr.length;i++){
     System.out.println(arr[i]);
 }
-Enhanced for loop
+
+Enhanced for loop //For-each Loop
+
 for(int a : arr){
     System.out.println(a);
 }
+
 Time Complexity
+
 O(n)
+
 9️⃣ Linear Search
 
 Example
 
 arr = [3,1,5,1,2]
+
 target = 5
+
 for(int i=0;i<arr.length;i++){
     if(arr[i] == target){
         return i;
     }
 }
+
 Time Complexity
+
 O(n)
+
 Space Complexity
+
 O(1)
+
 🔟 Problem 1 — Two Sum (#1)
 
 Brute Force Solution
+
 Time Complexity: O(n²)
 
 ⚡ Optimized Two Sum using HashMap
@@ -168,10 +192,11 @@ Best Time to Buy and Sell Stock II (#122)
 Students were asked to solve this problem independently first.
 
 Array vs ArrayList
-Array	ArrayList
-Fixed Size	Dynamic Size
-Faster	Slightly Slower
-Cannot add/remove elements	Can add/remove elements
+
+    Array	                         ArrayList
+  Fixed Size	                    Dynamic Size
+  Faster	                        Slightly Slower
+  Cannot add/remove elements    	Can add/remove elements
 
 Example
 
@@ -180,6 +205,7 @@ ArrayList<Integer> list = new ArrayList<>();
 list.add(10);
 list.add(20);
 list.add(30);
+
 🎯 Conclusion
 
 In this session students learned:
