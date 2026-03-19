@@ -1,93 +1,55 @@
-# Prime Check
+# Prime Check Problem Statement
 
-## Problem
+**Difficulty**: Easy  
+**Platform Links**:
+- [LeetCode - Valid Perfect Square (Similar)](https://leetcode.com/problems/valid-perfect-square/)
+- [GeeksforGeeks - Prime Check](https://www.geeksforgeeks.org/prime-number/)
+- [HackerRank - Prime Checking](https://www.hackerrank.com/challenges/is-prime/problem)
 
-Check whether a given integer `n` is a prime number.
+Given an integer `n`, determine whether it is a prime number. A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself.
 
-A prime number is a number greater than 1 that has no divisors other than 1 and itself.
+## Approaches
 
----
+### Approach 1: Brute Force (Optimized)
+Check divisibility from 2 up to √n. If any number divides n, it's not prime.
+- **Logic**: Only check up to √n because if a number has a divisor greater than √n, it must also have a divisor less than √n.
+- **Time**: O(√n)
+- **Space**: O(1)
 
-## Example
+### Approach 2: Trial Division (All even check first)
+First check if n is even, then check odd divisors from 3 to √n.
+- **Logic**: Check if divisible by 2, then check only odd numbers to reduce iterations by half.
+- **Time**: O(√n)
+- **Space**: O(1)
 
-### Input
-```
-n = 7
-```
+### Approach 3: Sieve Method (for multiple queries)
+Pre-compute all primes using Sieve of Eratosthenes.
+- **Logic**: If you need to check primality for multiple numbers, sieve is more efficient.
+- **Time**: O(n log log n) for preprocessing + O(1) per query
+- **Space**: O(n)
 
-### Output
-```
-true
-```
+## Time Complexity Comparison
+| Approach | Time Complexity | Space Complexity | Notes |
+|----------|-----------------|------------------|-------|
+| Brute Force | O(√n) | O(1) | Best for single query |
+| Optimized Trial Division | O(√n) | O(1) | Slightly faster than brute force |
+| Sieve of Eratosthenes | O(n log log n) + O(1) | O(n) | Better for multiple queries |
 
-### Input
-```
-n = 10
-```
+## Dry Run Example
+**Test Case 1**: `n = 7`
+- Check if n <= 1? No
+- i = 2 → i² = 4 ≤ 7 → 7 % 2 = 1 ≠ 0 → Continue
+- i = 3 → i² = 9 > 7 → Loop ends
+- No divisor found → **Output: true (7 is prime)**
 
-### Output
-```
-false
-```
+**Test Case 2**: `n = 10`
+- Check if n <= 1? No
+- i = 2 → i² = 4 ≤ 10 → 10 % 2 = 0 → **Output: false (10 is not prime)**
 
----
+**Test Case 3**: `n = 1`
+- Check if n <= 1? Yes → **Output: false (1 is not prime)**
 
-## Logic
-
-Check divisibility from 2 up to √n.  
-If `n` is divisible by any number in that range, it is not prime.
-
----
-
-## Solution
-
-```java
-public class PrimeCheck {
-
-    public boolean isPrime(int n) {
-        if (n <= 1) return false;
-
-        for (int i = 2; i * i <= n; i++) {
-            if (n % i == 0)
-                return false;
-        }
-
-        return true;
-    }
-}
-```
-
----
-
-## Dry Run
-
-```
-n = 7
-
-i = 2 → i * i = 4 ≤ 7 → 7 % 2 = 1 ≠ 0 → continue
-i = 3 → i * i = 9 > 7 → loop ends
-
-No divisor found → return true
-```
-
-```
-n = 10
-
-i = 2 → i * i = 4 ≤ 10 → 10 % 2 = 0 → return false
-```
-
----
-
-## Complexity
-
-```
-Time Complexity  : O(√n)
-Space Complexity : O(1)
-```
-
----
-
-## Why Check Only Up To √n?
-
-If `n` has a divisor `d > √n`, then `n / d < √n` is also a divisor.  
-So we only need to check up to √n to find all divisors.
+**Test Case 4**: `n = 2`
+- Check if n <= 1? No
+- i = 2 → i² = 4 > 2 → Loop ends
+- No divisor found → **Output: true (2 is prime)**
