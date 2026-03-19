@@ -1,94 +1,84 @@
-# GCD (Greatest Common Divisor)
+# GCD (Greatest Common Divisor) - Problem Statement
 
-## Problem
+**Difficulty**: Easy  
+**Platform Links**:
+- [LeetCode - GCD of Strings](https://leetcode.com/problems/gcd-of-strings/)
+- [GeeksforGeeks - GCD](https://www.geeksforgeeks.org/gcd-greatest-common-divisor-explained/)
+- [HackerRank - GCD](https://www.hackerrank.com/challenges/gcd/problem)
 
-Find the GCD (Greatest Common Divisor) of two integers `a` and `b` using the Euclidean Algorithm.
+Given two integers `a` and `b`, find the **Greatest Common Divisor (GCD)** using the **Euclidean Algorithm**.
 
----
+## Approaches
 
-## Example
+### Approach 1: Euclidean Algorithm (Recursive)
+Use the property: GCD(a, b) = GCD(b, a % b). Recursively apply until b becomes 0.
+- **Logic**: At each step, reduce the problem to smaller numbers.
+- **Time**: O(log(min(a, b)))
+- **Space**: O(log(min(a, b))) due to recursion stack
 
-### Input
-```
-a = 12
-b = 18
-```
+### Approach 2: Euclidean Algorithm (Iterative) - RECOMMENDED
+Same as recursive but using a loop instead of recursion.
+- **Logic**: More memory efficient, avoids recursion overhead.
+- **Time**: O(log(min(a, b)))
+- **Space**: O(1)
 
-### Output
-```
-6
-```
+### Approach 3: Subtraction Method
+Replace the larger number with (larger - smaller) repeatedly until both are equal.
+- **Logic**: GCD(a, b) = GCD(a - b, b) if a > b
+- **Time**: O(max(a, b))
+- **Space**: O(1)
 
-### Explanation
-```
-Divisors of 12 = [1, 2, 3, 4, 6, 12]
-Divisors of 18 = [1, 2, 3, 6, 9, 18]
+### Approach 4: Brute Force
+Check all numbers from 1 to min(a, b) and find the largest divisor.
+- **Logic**: Direct but inefficient.
+- **Time**: O(min(a, b))
+- **Space**: O(1)
 
-Common Divisors = [1, 2, 3, 6]
-GCD             = 6
-```
+## Time Complexity Comparison
+| Approach | Time Complexity | Space Complexity | Notes |
+|----------|-----------------|------------------|-------|
+| Euclidean (Iterative) | O(log(min(a, b))) | O(1) | **Best** |
+| Euclidean (Recursive) | O(log(min(a, b))) | O(log(min(a, b))) | Recursive overhead |
+| Subtraction | O(max(a, b)) | O(1) | Much slower |
+| Brute Force | O(min(a, b)) | O(1) | Inefficient |
 
----
+## Dry Run Examples
 
-## Logic
+**Example 1**: `a = 12, b = 18`
+- Step 1: gcd(18, 12 % 18) = gcd(18, 12)
+- Step 2: gcd(12, 18 % 12) = gcd(12, 6)
+- Step 3: gcd(6, 12 % 6) = gcd(6, 0)
+- b = 0, return 6
+- **Output: 6**
+- Verification: 12 = 2² × 3, 18 = 2 × 3² → GCD = 2 × 3 = 6
 
-Use the Euclidean Algorithm:  
-Replace `a` with `b` and `b` with `a % b`.  
-Repeat until `b` becomes 0.  
-At that point, `a` holds the GCD.
+**Example 2**: `a = 48, b = 18`
+- Step 1: gcd(18, 48 % 18) = gcd(18, 12)
+- Step 2: gcd(12, 18 % 12) = gcd(12, 6)
+- Step 3: gcd(6, 12 % 6) = gcd(6, 0)
+- b = 0, return 6
+- **Output: 6**
 
----
+**Example 3**: `a = 17, b = 5`
+- Step 1: gcd(5, 17 % 5) = gcd(5, 2)
+- Step 2: gcd(2, 5 % 2) = gcd(2, 1)
+- Step 3: gcd(1, 2 % 1) = gcd(1, 0)
+- b = 0, return 1
+- **Output: 1** (17 and 5 are coprime)
 
-## Solution
+**Example 4**: `a = 100, b = 50`
+- Step 1: gcd(50, 100 % 50) = gcd(50, 0)
+- b = 0, return 50
+- **Output: 50** (50 divides 100 evenly)
 
-```java
-public class GCD {
+**Example 5**: `a = 0, b = 5`
+- Step 1: gcd(5, 0 % 5) = gcd(5, 0)
+- b = 0, return 5
+- **Output: 5**
 
-    public int gcd(int a, int b) {
-        while (b != 0) {
-            int temp = b;
-            b = a % b;
-            a = temp;
-        }
-
-        return a;
-    }
-}
-```
-
----
-
-## Dry Run
-
-```
-a = 12, b = 18
-
-Step 1: temp = 18,  b = 12 % 18 = 12,  a = 18  → a = 18, b = 12
-Step 2: temp = 12,  b = 18 % 12 = 6,   a = 12  → a = 12, b = 6
-Step 3: temp = 6,   b = 12 % 6  = 0,   a = 6   → a = 6,  b = 0
-
-b = 0 → loop ends
-
-Result: 6
-```
-
----
-
-## Complexity
-
-```
-Time Complexity  : O(log(min(a, b)))
-Space Complexity : O(1)
-```
-
----
-
-## Key Insight
-
-The Euclidean Algorithm is based on the property:
-
-```
-GCD(a, b) = GCD(b, a % b)
-```
-
-This is because any common divisor of `a` and `b` also divides `a % b`.
+## Key Properties
+1. GCD(a, b) = GCD(b, a % b)
+2. GCD(a, 0) = a
+3. GCD(a, a) = a
+4. GCD(a, b) = GCD(b, a) (commutative)
+5. If GCD(a, b) = 1, then a and b are coprime
