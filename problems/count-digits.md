@@ -1,74 +1,30 @@
-# Count Digits
+# Count Digits Problem Statement
+Given an integer number, the task is to count the number of digits present in it.
 
-## Problem
+## Approaches
+1. **Iterative Approach**: Count digits using a loop until the number becomes zero.
+    - Start with count as 0.
+    - While the number is greater than 0, increment count and divide the number by 10.
 
-Count the number of digits in a given integer `n`.
+2. **String Conversion**: Convert the number to a string and return the length of the string.
+    - Convert the number to string using `String.valueOf(num)` and return `numStr.length()`.
 
----
+3. **Logarithmic Approach**: Use logarithms to count digits.
+    - The number of digits in a number `n` can be counted using `Math.floor(Math.log10(n)) + 1` if `n` is positive.
 
-## Example
+## Time Complexity
+- Iterative Approach: O(log10(n))
+- String Conversion: O(1) for conversion, O(d) for length calculation (where d is the number of digits)
+- Logarithmic Approach: O(1)
 
-### Input
-```
-n = 12345
-```
-
-### Output
-```
-5
-```
-
----
-
-## Logic
-
-Divide `n` by 10 repeatedly and count each iteration until `n` becomes 0.
-
----
-
-## Solution
-
-```java
-public class CountDigits {
-
-    public int countDigits(int n) {
-        if (n == 0) return 1;
-
-        int count = 0;
-
-        while (n > 0) {
-            n /= 10;
-            count++;
-        }
-
-        return count;
-    }
-}
-```
-
----
-
-## Dry Run
-
-```
-n = 12345
-
-Iteration 1: n = 12345 / 10 = 1234,  count = 1
-Iteration 2: n = 1234  / 10 = 123,   count = 2
-Iteration 3: n = 123   / 10 = 12,    count = 3
-Iteration 4: n = 12    / 10 = 1,     count = 4
-Iteration 5: n = 1     / 10 = 0,     count = 5
-
-n = 0 → loop ends
-
-Result: 5
-```
-
----
-
-## Complexity
-
-```
-Time Complexity  : O(d)  where d = number of digits
-Space Complexity : O(1)
-```
+## Dry Run Example
+Let's dry run the **Iterative Approach**:
+- Input: `12345`
+- Steps: 
+    - Count = 0
+    - 12345 > 0, increment count (count = 1), number = 1234
+    - 1234 > 0, increment count (count = 2), number = 123
+    - 123 > 0, increment count (count = 3), number = 12
+    - 12 > 0, increment count (count = 4), number = 1
+    - 1 > 0, increment count (count = 5), number = 0
+- Final count of digits is **5**.
