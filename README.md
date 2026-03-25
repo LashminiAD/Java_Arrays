@@ -262,6 +262,36 @@ list.add(30);
 
 ---
 
+## 🔹 Basic Array Problems (Must Know Before Easy)
+
+| # | Problem | Platform | Solution |
+|---|---------|----------|----------|
+| 1 | Largest Element in Array | [GFG](https://www.geeksforgeeks.org/problems/largest-element-in-array4009/1) | [LargestElement.java](code/LargestElement.java) |
+| 2 | Check if Array is Sorted | [GFG](https://www.geeksforgeeks.org/problems/check-if-an-array-is-sorted0701/1) | [IsSorted.java](code/IsSorted.java) |
+| 3 | Check if Array is Sorted & Rotated | [LeetCode #1752](https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/) | [SortedAndRotated.java](code/SortedAndRotated.java) |
+| 4 | Second Largest Element | [GFG](https://www.geeksforgeeks.org/problems/second-largest3735/1) | [SecondLargest.java](code/SecondLargest.java) |
+| 5 | Linear Search | [GFG](https://www.geeksforgeeks.org/problems/who-will-win-1587115621/1) | [LinearSearch.java](code/LinearSearch.java) |
+| 6 | Left Rotate Array by One | [GFG](https://www.geeksforgeeks.org/problems/rotate-array-by-n-elements-1587115621/1) | [LeftRotateByOne.java](code/LeftRotateByOne.java) |
+| 7 | Rotate Array by K Steps | [LeetCode #189](https://leetcode.com/problems/rotate-array/) | [RotateArrayK.java](code/RotateArrayK.java) |
+
+### Problem Descriptions
+
+1. **Largest Element** — Traverse the array once, tracking the running maximum. **O(n) time, O(1) space.**
+
+2. **Check if Sorted** — Return `false` as soon as any element is smaller than its predecessor. **O(n) time, O(1) space.**
+
+3. **Check if Sorted & Rotated** — Count positions where `nums[i] > nums[(i+1) % n]`. A sorted-rotated array has at most one such "break point". **O(n) time, O(1) space.**
+
+4. **Second Largest** — Single pass maintaining `largest` and `secondLargest` variables; return `-1` if no distinct second largest exists. **O(n) time, O(1) space.**
+
+5. **Linear Search** — Scan left to right and return the index of the first match, or `-1` if not found. **O(n) time, O(1) space.**
+
+6. **Left Rotate by One** — Save `nums[0]`, shift every element one position left, place the saved value at the last index. **O(n) time, O(1) space.**
+
+7. **Rotate Array by K (Reversal Algorithm)** — Reverse the full array, then reverse the first `k` elements, then reverse the remaining `n-k` elements. **O(n) time, O(1) space.**
+
+---
+
 ## 🎯 Conclusion
 
 In this session students learned:
