@@ -1,4 +1,4 @@
-# Java Arrays - Session 1
+# Java Arrays
 
 ## 1️⃣ Why Do We Need Arrays?
 
