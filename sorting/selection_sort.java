@@ -1,6 +1,5 @@
 class Solution {
     void selectionSort(int[] arr) {
-        // code here
         int n = arr.length;
         for(int i = 0; i<n; i++){
             int min = i;
